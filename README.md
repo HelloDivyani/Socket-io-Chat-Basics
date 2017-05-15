@@ -1,5 +1,3 @@
-# Socket-io-Chat-Basics
-
 Android Chat Application Using Sockets
 Socket is an internal endpoint in the single node for sending and receiving data in computer network.
 
@@ -86,41 +84,15 @@ Emitting Events :
 The main idea behind Socket.IO is that you can send and receive any events you want, with any data you want.
 Any objects that can be encoded as JSON will do, and binary data is supported too.
 
-BroadCasting : 
+BroadCasting :
 The next goal is for us to emit the event from the server to the rest of the users.
+Inorder to send Event to everyone use io.emit()
+io.emit('some event', { for: 'everyone' });
+
+If you want to send a message to everyone except for a certain socket, we have the broadcast flag:
+io.on('connection', function(socket){
+  socket.broadcast.emit('hi');
+});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
+Client Side Capture the chat Message and Include it in the Page
