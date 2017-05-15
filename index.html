@@ -4,6 +4,10 @@
 SOCKET IO CHAT</title>
 
 <style>
+form{
+top-margin:70px;
+}
+
 </style>
 </head>
 <body>
@@ -16,14 +20,20 @@ SOCKET IO CHAT</title>
 <script src = "/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
-
+$(function()
+{
   var socket = io();
   $('form').submit(function(){
   socket.emit('chat message',$('#UserMessage').val());
    $('#UserMessage').val('');
       return false;
+    });
   
   
+  socket.on('chat message', function(msg){
+	
+      $('#messages').append($('<li>').text(msg));
+    });
   });
   
 </script>
